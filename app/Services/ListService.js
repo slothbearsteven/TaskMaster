@@ -17,13 +17,13 @@ export default class ValuesService {
     }
 
     deleteItem(listindex, itemindex) {
-        _state.list[listindex].items.splice(itemindex, 1)
+        _state.lists[listindex].item.splice(itemindex, 1)
 
         this.saveLists()
     }
 
-    addItem(listindex, newitem) {
-        _state.lists[listindex].items.push(newitem)
+    addItem(newitem, listindex) {
+        _state.lists[listindex].item.push(newitem)
 
         this.saveLists()
     }

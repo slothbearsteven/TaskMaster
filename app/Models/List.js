@@ -4,14 +4,14 @@ export default class List {
     constructor(data) {
         console.log('BOOM you got a list')
         this.name = data.name
-        this.items = data.items || []
+        this.item = data.item || []
         
     }
 
     //This function creates the template for the tasks that are created by the user.
 getTemplate(index){
     let template= `
-    <div class ="col-4">
+    <div class ="col-12 col-md-3 tasky">
     <h1>${this.name}</h1>
     <ul>
     `
@@ -19,22 +19,22 @@ getTemplate(index){
     template+=`
     </ul>
       <form onsubmit="app.controllers.listController.addItem(event, ${index})">
-                    <div class="form-group">
-                        <label for="items">Task Items</label>
-                        <input type="text" class="form-control" aria-describedby="items" id="items"
-                            placeholder="Enter Item" required>
+        <div class="form-group">
+         <label for="item">Task Items</label>
+        <input type="text" class="form-control"
+         name="item"
+                           
+         placeholder="Enter Item" required>
                     </div>
                     <button type="submit" class="btn btn-primary" >+</button>
                 </form>
-                <div>
-                <button type=button onclick="app.controllers.listController. deleteList(${index})">X</button> 
-                </div>`
+                <button type=button onclick="app.controllers.listController. deleteList(${index})">X</button> `
     
     return template
 }
- drawItems(listIndex){
+ drawItems(listindex){
  let itemTemplate=''
- this.items.forEach((i, itemIndex) => {
+ this.item.forEach((i, itemindex) => {
      itemTemplate += `<li>${i}<span onclick="app.controllers.listController.deleteItem(${listindex}, ${itemindex})">X</span></li>
      `
  });
@@ -42,3 +42,12 @@ getTemplate(index){
  return itemTemplate
  }
 }
+
+
+// NOTE Example
+//   drawToppings(pizzaIndex) {
+//     let toppingTemplate = ""
+//     this.toppings.forEach((t, toppingIndex) => {
+//       toppingTemplate += `<li>${t}<span onclick="app.controllers.pizzaController.deleteTopping(${pizzaIndex}, ${toppingIndex})">X</span></li>`
+//     });
+//     return toppingTemplate
