@@ -7,11 +7,33 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/style.css">
-    <title>Listmon</title>
+    <title>Aperature Task Manager</title>
 </head>
 
 <body>
+    <div class="container-fluid">
+        <div class="row justify-content-center text-center">
+            <div class="col-12">
+                <h1>Aperature Task Manager</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-5">
+                <form onsubmit="app.controllers.listController.addList(event)">
+                    <div class="form-group">
+                        <label for="name">Task Name:</label>
+                        <input type="text" class="form-control" id="name" aria-describedby="name"
+                            placeholder="Enter Quest title here">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Add Task</button>
+                </form>
+            </div>
+        </div>
+        <div class="row text-center" id="tasks">
 
+
+        </div>
+    </div>
 
     <script src="app/main.js" type="module"></script>
 </body>

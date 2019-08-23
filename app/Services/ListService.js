@@ -11,9 +11,38 @@ export default class ValuesService {
     //TODO  Here is where we handle all of our data manipulation, 
     //given the information you need in the controller, 
     //what methods will be required to support that functionality?
+    constructor() {
+        console.log('hey from service')
+        this.getLists()
+    }
 
+    deleteItem(listindex, itemindex) {
+        _state.list[listindex].items.splice(itemindex, 1)
 
+        this.saveLists()
+    }
 
+    addItem(listindex, newitem) {
+        _state.lists[listindex].items.push(newitem)
+
+        this.saveLists()
+    }
+
+    deleteList(index) {
+        _state.lists.splice(index, 1)
+        this.saveLists()
+    }
+
+    addList(newlist) {
+        _state.lists.push(new List(newlist))
+
+        this.saveLists()
+        console.log(_state.lists)
+    }
+
+    get Lists() {
+        return _state.lists.map(list => new List(list))
+    }
 
     //NOTE You will need this code to persist your data into local storage, these methods should not require changing
 
@@ -30,3 +59,23 @@ export default class ValuesService {
         }
     }
 }
+
+//NOTE Example
+// export default class PizzaService {
+//     addTopping(newTopping, pizzaIndex) {
+//         _state.pizzas[pizzaIndex].toppings.push(newTopping)
+//         this.savePizzas()
+//     }
+//     addPizza(newPizza) {
+//         _state.pizzas.push(new Pizza(newPizza))
+//         this.savePizzas()
+//         console.log(_state.pizzas)
+//     }
+//     constructor() {
+//         console.log("Howdy from pizza service........")
+//         this.loadPizzas()
+
+//     }
+//     get Pizza() {
+//         return _state.pizzas.map(pizza => new Pizza(pizza))
+//     }
