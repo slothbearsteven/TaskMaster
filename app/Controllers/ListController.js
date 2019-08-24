@@ -43,12 +43,18 @@ export default class ListController {
     }
 
     deleteList(index) {
-        _listService.deleteList(index)
-        _drawLists()
+        var r = confirm("Are you sure you want to delete this?");
+        if (r == true) {
+            _listService.deleteList(index)
+            _drawLists()
+        }
     }
 
     deleteItem(listindex, itemindex) {
-        _listService.deleteItem(listindex, itemindex)
-        _drawLists()
+        var r = confirm("Are you sure you want to delete this?");
+        if (r == true) {
+            _listService.deleteItem(listindex, itemindex)
+            _drawLists()
+        }
     }
 }
